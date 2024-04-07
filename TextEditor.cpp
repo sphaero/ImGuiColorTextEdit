@@ -1472,8 +1472,8 @@ bool TextEditor::Render(const char* aTitle, bool aParentIsFocused, const ImVec2&
 	bool isFocused = ImGui::IsWindowFocused();
 	if (mHandleKeyboardInputs)
 	{
-		HandleKeyboardInputs(aParentIsFocused);
-		ImGui::PushAllowKeyboardFocus(true);
+        HandleKeyboardInputs(aParentIsFocused);
+        ImGui::PushTabStop(true);
 	}
 
 	if (mHandleMouseInputs)
@@ -1482,8 +1482,8 @@ bool TextEditor::Render(const char* aTitle, bool aParentIsFocused, const ImVec2&
 	ColorizeInternal();
 	Render(aParentIsFocused);
 
-	if (mHandleKeyboardInputs)
-		ImGui::PopAllowKeyboardFocus();
+    if (mHandleKeyboardInputs)
+        ImGui::PopTabStop();
 
 	if (!mIgnoreImGuiChild)
 		ImGui::EndChild();
